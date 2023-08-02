@@ -16,10 +16,10 @@ const Options = (props) => {
     <>
 
       <div className='options'>
-          <button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[0])}>{shuffled[0]}</button>
-          <button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[1])}>{shuffled[1]}</button>
-          <button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[2])}>{shuffled[2]}</button>
-          <button onClick={()=> props.handleCorrectAnswer(arr[0],shuffled[3])}>{shuffled[3]}</button>
+          {shuffled[0]!=="undefined" &&<button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[0])} disabled={props.visiblenextbtn?true:false}>{shuffled[0]}</button>}
+          {shuffled[1]!=="undefined" &&<button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[1])} disabled={props.visiblenextbtn?true:false}>{shuffled[1]}</button>}
+          {shuffled[2]!=="undefined" &&<button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[2])} disabled={props.visiblenextbtn?true:false}>{shuffled[2]}</button>}
+          {shuffled[3]!=="undefined" &&<button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[3])} disabled={props.visiblenextbtn?true:false}>{shuffled[3]}</button>}
       </div>
     </>
   )
