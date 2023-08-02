@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Nextquestion = ({ques,handleQuestions}) => {
-  
+const Nextquestion = ({ques,handleQuestions,visiblenextbtn}) => {
   return (
     <>
-      <button className='next'  onClick={handleQuestions}>Next Question</button>
+      {visiblenextbtn ? <button className='next'  onClick={handleQuestions}>Next Question</button> : <p></p>}
+      
     </>
   )
 }
