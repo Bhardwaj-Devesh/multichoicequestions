@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Questionresult = () => {
+const Questionresult = (props) => {
   return (
     <>
-      <p className='result'>Correct!</p>
+      {props.iscorrect ?<p className='result'>Correct!</p> : <p className='result'>Incorrect!</p>}
+    
     </>
   )
 }

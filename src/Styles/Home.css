@@ -53,7 +53,7 @@
         border: 1px solid rgba(0, 0, 0, 0.336);
         cursor:pointer;
         &:hover{
-          background-color:black;
+          background-color:rgb(214, 204, 71);
           color:white;
         }
       }

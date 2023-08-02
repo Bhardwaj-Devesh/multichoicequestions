@@ -16,17 +16,30 @@ const Home = () => {
     const handleQuestions=()=>{
         if(ques<data.length){
             setQues(ques+1);
+            setVisiblenextbtn(false);
+        }
+    }
+    const [iscorrect,setIscorrect]=useState(false);
+    const [visiblenextbtn,setVisiblenextbtn]=useState(false);
+    const handleCorrectAnswer=(correct_answer,choosen_answer)=>{
+        if(correct_answer===choosen_answer){
+            setIscorrect(true);
+            setVisiblenextbtn(true);
+        } 
+        else {
+            setIscorrect(false);
+            setVisiblenextbtn(false);
         }
     }
   return (
     <>
         <div className='container'>
             <div>
-                <progress value="50" max="100"></progress>
+                <progress value={ques*100/20} max="100"></progress>
             </div>
 
             <h2>Question {ques+1} of 20</h2>
-            <p className='tag'>Entertainment: Board Games</p>
+            <p className='tag'>{decodeURIComponent(data[ques].category)}</p>
             <div className='stars'>
                 {stars}
             </div> 
@@ -35,11 +48,15 @@ const Home = () => {
                 ques={ques}
                  
             />
-            <Options ques={ques} options_data={data}/>
-            <Questionresult/>
+            <Options ques={ques} 
+                options_data={data}
+                handleCorrectAnswer={handleCorrectAnswer}
+            />
+            <Questionresult iscorrect={iscorrect}/>
             <Nextquestion
                 ques={ques}
                 handleQuestions={handleQuestions}
+                visiblenextbtn={visiblenextbtn}
             />
         </div>
     </>

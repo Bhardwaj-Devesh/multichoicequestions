@@ -6,17 +6,21 @@ const Options = (props) => {
   arr.push(decodeURIComponent(props.options_data[props.ques].incorrect_answers[0]));
   arr.push(decodeURIComponent(props.options_data[props.ques].incorrect_answers[1]));
   arr.push(decodeURIComponent(props.options_data[props.ques].incorrect_answers[2]));
+  const shuffled = [...arr];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+ 
   return (
     <>
 
       <div className='options'>
-            {/* {console.log(arr)} */}
-            {console.log( Math.floor(Math.random() * (3 - 0 + 1)) + 0)}
-            <button>{arr[Math.floor(Math.random() * (3 - 0 + 1)) + 0]}</button>
-            <button>{arr[Math.floor(Math.random() * (3 - 0 + 1)) + 0]}</button>
-            <button>{arr[Math.floor(Math.random() * (3 - 0 + 1)) + 0]}</button>
-            <button>{arr[Math.floor(Math.random() * (3 - 0 + 1)) + 0]}</button>
-        </div>
+          <button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[0])}>{shuffled[0]}</button>
+          <button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[1])}>{shuffled[1]}</button>
+          <button onClick={()=>props.handleCorrectAnswer(arr[0],shuffled[2])}>{shuffled[2]}</button>
+          <button onClick={()=> props.handleCorrectAnswer(arr[0],shuffled[3])}>{shuffled[3]}</button>
+      </div>
     </>
   )
 }
